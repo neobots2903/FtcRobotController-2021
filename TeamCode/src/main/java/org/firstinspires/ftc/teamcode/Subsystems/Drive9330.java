@@ -80,6 +80,18 @@ public class Drive9330 {
         hwMap.rightBack.setPower(power);
         hwMap.leftBack.setPower(power);
     }
+    public void mecanumDrive(double frPower, double flPower, double brPower, double blPower){
+        hwMap.rightFront.setPower(frPower);
+        hwMap.leftFront.setPower(flPower);
+        hwMap.rightBack.setPower(brPower);
+        hwMap.leftBack.setPower(blPower);
+    }
+//    public void directlyDriveRight(double power){
+//        hwMap.rightFront.setPower(power);
+//        hwMap.leftFront.setPower(power);
+//        hwMap.rightBack.setPower(-power);
+//        hwMap.leftBack.setPower(-power);
+//    }
 
     public void driveRightTime(double power, double seconds){
 

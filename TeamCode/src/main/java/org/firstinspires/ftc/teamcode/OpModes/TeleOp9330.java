@@ -14,7 +14,6 @@ public class TeleOp9330 extends OpMode {
 
     Drive9330 drive;
 
-
     private boolean isAHeld = false;
     private boolean isAHeld1 = false;
     private boolean isBHeld = false;
@@ -68,17 +67,23 @@ public class TeleOp9330 extends OpMode {
         }
 
 
-        float yPower = -gamepad1.left_stick_y;
-        float xPower = gamepad1.left_stick_x;
-        float averagePower = (Math.abs(gamepad1.left_stick_y) + Math.abs(gamepad1.left_stick_x)) / 2;
-
-        if (Math.abs(yPower) > 0.1) {
-            drive.driveForward(-yPower);
-        } else if (Math.abs(xPower) > 0.1) {
-            drive.driveRight(xPower);
-        }
-        drive.turnClockwise(-gamepad1.right_stick_x);
-
-
+//        float yPower = -gamepad1.left_stick_y;
+//        float xPower = gamepad1.left_stick_x;
+//        float averagePower = (Math.abs(gamepad1.left_stick_y) + Math.abs(gamepad1.left_stick_x)) / 2;
+//
+//        if (Math.abs(yPower) > 0.1) {
+//            drive.driveForward(-yPower);
+//        } else if (Math.abs(xPower) > 0.1) {
+//            drive.driveRight(xPower);
+//        }
+//        drive.turnClockwise(-gamepad1.right_stick_x);
+        double yPower = -gamepad1.left_stick_y;
+        double xPower = gamepad1.left_stick_x;
+        double rightXPower = gamepad1.right_stick_x;
+        double flPower = -(yPower + (xPower * 1.25) + rightXPower); // uneven robot weight means we'll need to adjust values of 1 for proper strafing
+        double blPower = -(yPower + (xPower * 1) - rightXPower);
+        double frPower = yPower - (xPower * 1.25) - rightXPower;
+        double brPower = yPower - (xPower * 1) + rightXPower;
+        drive.mecanumDrive(frPower, flPower, brPower, blPower);
     }
 }

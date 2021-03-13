@@ -49,8 +49,8 @@ public class Hardware9330 {
 //        gyro = hwMap.get(BNO055IMU.class, "gyro");
 
 
-//        intakeLeft = hwMap.dcMotor.get("intakeLeft");
-//        intakeRight = hwMap.dcMotor.get("intakeRight");
+//       intakeLeft = hwMap.dcMotor.get("intakeLeft");
+//      intakeRight = hwMap.dcMotor.get("intakeRight");
 
 
 
