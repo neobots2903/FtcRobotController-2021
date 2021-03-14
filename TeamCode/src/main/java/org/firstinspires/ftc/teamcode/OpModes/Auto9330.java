@@ -32,165 +32,197 @@ public class Auto9330 extends LinearOpMode {
             stop();
 
         }
-        double power = 10;
+        double power = .5;
         double flPower = 0;
         double blPower = 0;
         double frPower = 0;
         double brPower = 0;
-
-        sleep(250);
+        //Strafe Left
+//        flPower = power;
+//        blPower = -power;
+//        frPower = power;
+//        brPower = -power;
         //Go Forward
-         flPower = power;
-         blPower = power;
-         frPower = -power;
-         brPower = -power;
-        drive.mecanumDrive(frPower, flPower, brPower, blPower);
+//         flPower = -power;
+//         blPower = -power;
+//         frPower = power;
+//         brPower = power;
+        drive.mecanumDrive(power, -power, power, -power);  //Forward
+        drive.mecanumDrive(power, power, power, power);  //TwistLeft
+        drive.mecanumDrive(-power, -power, -power, -power);  //TwistRight
+        drive.mecanumDrive(-power, power, -power, power);  //Back
+        drive.mecanumDrive(power, -power, power, -power);  //StrafeLeft
+        drive.mecanumDrive(-power, power, power, -power);  //StrafeRight
+        drive.mecanumDrive(0, 0, 0, 0); //Stop
+        sleep(200000);
         sleep(250);
 
-        //Stop
-        flPower = 0;
-        blPower = 0;
-        frPower = 0;
-        brPower = 0;
-        drive.mecanumDrive(frPower, flPower, brPower, blPower);
-        sleep(250);
-
-        //Go Back
-         flPower = -power;
-         blPower = -power;
-         frPower = power;
-         brPower = power;
-        drive.mecanumDrive(frPower, flPower, brPower, blPower);
-        sleep(250);
-
-        //Stop
-        flPower = 0;
-        blPower = 0;
-        frPower = 0;
-        brPower = 0;
-        drive.mecanumDrive(frPower, flPower, brPower, blPower);
-        sleep(250);
-
-        //Twist Left
-         flPower = power;
-         blPower = power;
-         frPower = power;
-         brPower = power;
-        drive.mecanumDrive(frPower, flPower, brPower, blPower);
-        sleep(250);
-
-        //Stop
-        flPower = 0;
-        blPower = 0;
-        frPower = 0;
-        brPower = 0;
-        drive.mecanumDrive(frPower, flPower, brPower, blPower);
-        sleep(250);
-
-        //Twist Right
-         flPower = -power;
-         blPower = -power;
-         frPower = -power;
-         brPower = -power;
-        drive.mecanumDrive(frPower, flPower, brPower, blPower);
-        sleep(250);
-
-        //Stop
-        flPower = 0;
-        blPower = 0;
-        frPower = 0;
-        brPower = 0;
-        drive.mecanumDrive(frPower, flPower, brPower, blPower);
-        sleep(250);
-
-        //Twist Right
-        flPower = -power;
-        blPower = -power;
-        frPower = -power;
-        brPower = -power;
-        drive.mecanumDrive(frPower, flPower, brPower, blPower);
-        sleep(250);
-
-        //Stop
-        flPower = 0;
-        blPower = 0;
-        frPower = 0;
-        brPower = 0;
-        drive.mecanumDrive(frPower, flPower, brPower, blPower);
-        sleep(250);
-
-        //Twist Left
-        flPower = power;
-        blPower = power;
-        frPower = power;
-        brPower = power;
-        drive.mecanumDrive(frPower, flPower, brPower, blPower);
-        sleep(250);
-
-        //Stop
-        flPower = 0;
-        blPower = 0;
-        frPower = 0;
-        brPower = 0;
-        drive.mecanumDrive(frPower, flPower, brPower, blPower);
-        sleep(250);
-
-        //Strafe Left
-         flPower = -power;
-         blPower = power;
-         frPower = power;
-         brPower = -power;
-        drive.mecanumDrive(frPower, flPower, brPower, blPower);
-        sleep(250);
-
-        //Stop
-        flPower = 0;
-        blPower = 0;
-        frPower = 0;
-        brPower = 0;
-        drive.mecanumDrive(frPower, flPower, brPower, blPower);
-        sleep(250);
-
-        //Strafe Right
-         flPower = power;
-         blPower = -power;
-         frPower = -power;
-         brPower = power;
-        drive.mecanumDrive(frPower, flPower, brPower, blPower);
-        sleep(250);
-
-        //Stop
-        flPower = 0;
-        blPower = 0;
-        frPower = 0;
-        brPower = 0;
-        drive.mecanumDrive(frPower, flPower, brPower, blPower);
-        sleep(250);
-
-        //Strafe Right
-        flPower = power;
-        blPower = -power;
-        frPower = -power;
-        brPower = power;
-        drive.mecanumDrive(frPower, flPower, brPower, blPower);
-        sleep(250);
-
-        //Stop
-        flPower = 0;
-        blPower = 0;
-        frPower = 0;
-        brPower = 0;
-        drive.mecanumDrive(frPower, flPower, brPower, blPower);
-        sleep(250);
-
-        //Strafe Left
-        flPower = -power;
-        blPower = power;
-        frPower = power;
-        brPower = -power;
-        drive.mecanumDrive(frPower, flPower, brPower, blPower);
-        sleep(250);
-
-        stop();
-    }
+//        //Go Back
+//         flPower = power;
+//         blPower = power;
+//         frPower = -power;
+//         brPower = -power;
+//        drive.mecanumDrive(frPower, flPower, brPower, blPower);
+//        sleep(250);
+//
+//        //Stop
+//        flPower = 0;
+//        blPower = 0;
+//        frPower = 0;
+//        brPower = 0;
+//        drive.mecanumDrive(frPower, flPower, brPower, blPower);
+//        sleep(250);
+//
+//        //Twist Left
+//         flPower = power;
+//         blPower = power;
+//         frPower = power;
+//         brPower = power;
+//        drive.mecanumDrive(frPower, flPower, brPower, blPower);
+//        sleep(250);
+//
+//        //Stop
+//        flPower = 0;
+//        blPower = 0;
+//        frPower = 0;
+//        brPower = 0;
+//        drive.mecanumDrive(frPower, flPower, brPower, blPower);
+//        sleep(250);
+//
+//        //Twist Right
+//         flPower = -power;
+//         blPower = -power;
+//         frPower = -power;
+//         brPower = -power;
+//        drive.mecanumDrive(frPower, flPower, brPower, blPower);
+//        sleep(250);
+//
+//        //Stop
+//        flPower = 0;
+//        blPower = 0;
+//        frPower = 0;
+//        brPower = 0;
+//        drive.mecanumDrive(frPower, flPower, brPower, blPower);
+//        sleep(250);
+//
+//        //Twist Right
+//        flPower = -power;
+//        blPower = -power;
+//        frPower = -power;
+//        brPower = -power;
+//        drive.mecanumDrive(frPower, flPower, brPower, blPower);
+//        sleep(250);
+//
+//        //Stop
+//        flPower = 0;
+//        blPower = 0;
+//        frPower = 0;
+//        brPower = 0;
+//        drive.mecanumDrive(frPower, flPower, brPower, blPower);
+//        sleep(250);
+//
+//        //Twist Left
+//        flPower = power;
+//        blPower = power;
+//        frPower = power;
+//        brPower = power;
+//        drive.mecanumDrive(frPower, flPower, brPower, blPower);
+//        sleep(250);
+//
+//        //Stop
+//        flPower = 0;
+//        blPower = 0;
+//        frPower = 0;
+//        brPower = 0;
+//        drive.mecanumDrive(frPower, flPower, brPower, blPower);
+//        sleep(250);
+//
+//        power = .5;
+//        //Strafe Left
+//        flPower = power;
+//        blPower = -power;
+//        frPower = -power;
+//        brPower = power;
+//        drive.mecanumDrive(frPower, flPower, brPower, blPower);
+//        sleep(2000);
+//
+//        //Stop
+//        flPower = 0;
+//        blPower = 0;
+//        frPower = 0;
+//        brPower = 0;
+//        drive.mecanumDrive(frPower, flPower, brPower, blPower);
+//        sleep(250);
+//
+//        //Strafe Right
+//        flPower = -power;
+//        blPower = power;
+//        frPower = power;
+//        brPower = -power;
+//        drive.mecanumDrive(frPower, flPower, brPower, blPower);
+//        sleep(2000);
+//
+//
+//        //Stop
+//        flPower = 0;
+//        blPower = 0;
+//        frPower = 0;
+//        brPower = 0;
+//        drive.mecanumDrive(frPower, flPower, brPower, blPower);
+//        sleep(250);
+//
+//        //Strafe Right
+//        flPower = power;
+//        blPower = -power;
+//        frPower = -power;
+//        brPower = power;
+//        drive.mecanumDrive(frPower, flPower, brPower, blPower);
+//        sleep(250);
+//
+//        //Stop
+//        flPower = 0;
+//        blPower = 0;
+//        frPower = 0;
+//        brPower = 0;
+//        drive.mecanumDrive(frPower, flPower, brPower, blPower);
+//        sleep(250);
+//
+//        //Strafe Left
+//        flPower = -power;
+//        blPower = power;
+//        frPower = power;
+//        brPower = -power;
+//        drive.mecanumDrive(frPower, flPower, brPower, blPower);
+//        sleep(250);
+//
+//        //Stop
+//        flPower = -.5;
+//        blPower = 0;
+//        frPower = 0;
+//        brPower = 0;
+//        drive.mecanumDrive(frPower, flPower, brPower, blPower);
+//        sleep(2500);
+//        //Stop
+//        flPower = 0;
+//        blPower = -.5;
+//        frPower = 0;
+//        brPower = 0;
+//        drive.mecanumDrive(frPower, flPower, brPower, blPower);
+//        sleep(2500);
+//        //Stop
+//        flPower = 0;
+//        blPower = 0;
+//        frPower = -.5;
+//        brPower = 0;
+//        drive.mecanumDrive(frPower, flPower, brPower, blPower);
+//        sleep(2500);
+//        //Stop
+//        flPower = 0;
+//        blPower = 0;
+//        frPower = 0;
+//        brPower = -.5;
+//        drive.mecanumDrive(frPower, flPower, brPower, blPower);
+//        sleep(2500);
+//        stop();
+  }
 }
