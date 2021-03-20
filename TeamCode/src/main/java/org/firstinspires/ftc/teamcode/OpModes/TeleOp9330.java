@@ -27,11 +27,13 @@ public class TeleOp9330 extends OpMode {
 
         drive = new Drive9330(robot9330);
         shooter = new Shooter9330(robot9330);
+        shooter.getSpeed();
     }
 
     @Override
     public void loop() {
         telemetry.addData("Current position: ", shooter.getCurrentPosition());
+        telemetry.addData("Current speed: ", shooter.getSpeed());
         if (gamepad2.a && !isAHeld) {
 
             telemetry.addData("Program: ", "A2 is tapped");
@@ -56,6 +58,12 @@ public class TeleOp9330 extends OpMode {
             telemetry.addData("Program: ", "A1 isn't tapped");
         }
 
+        if (gamepad2.x) {
+            shooter.shootSpeed(1);
+        }
+        else {
+            shooter.shootSpeed(0);
+        }
 
         if (gamepad2.b && !isBHeld) {
 
