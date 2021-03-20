@@ -18,17 +18,17 @@ public class Drive9330 {
 
 
     public void turnCounterClockwise(double power) {
-        hwMap.rightFront.setPower(-power);
-        hwMap.leftFront.setPower(-power);
-        hwMap.rightBack.setPower(-power);
-        hwMap.leftBack.setPower(-power);
-    }
-
-    public void turnClockwise(double power) {
         hwMap.rightFront.setPower(power);
         hwMap.leftFront.setPower(power);
         hwMap.rightBack.setPower(power);
         hwMap.leftBack.setPower(power);
+    }
+
+    public void turnClockwise(double power) {
+        hwMap.rightFront.setPower(-power);
+        hwMap.leftFront.setPower(-power);
+        hwMap.rightBack.setPower(-power);
+        hwMap.leftBack.setPower(-power);
     }
 
     public void turnClockwiseTime(double power, double seconds) {
@@ -63,22 +63,28 @@ public class Drive9330 {
     public void driveForward(double power){
         hwMap.rightFront.setPower(-power);
         hwMap.leftFront.setPower(power);
+        hwMap.rightBack.setPower(power);
+        hwMap.leftBack.setPower(-power);
+    }
+
+    public void driveBackward(double power){
+        hwMap.rightFront.setPower(power);
+        hwMap.leftFront.setPower(-power);
         hwMap.rightBack.setPower(-power);
         hwMap.leftBack.setPower(power);
     }
 
-//    public void driveBackward(float power){
-//        hwMap.rightFront.setPower(-power);
-//        hwMap.leftFront.setPower(power);
-//        hwMap.rightBack.setPower(-power);
-//        hwMap.leftBack.setPower(power);
-//    }
-
     public void driveRight(double power){
-        hwMap.rightFront.setPower(-power);
+        hwMap.rightFront.setPower(power);
         hwMap.leftFront.setPower(-power);
-        hwMap.rightBack.setPower(power);
+        hwMap.rightBack.setPower(-power);
         hwMap.leftBack.setPower(power);
+    }
+    public void driveLeft(double power){
+        hwMap.rightFront.setPower(-power);
+        hwMap.leftFront.setPower(power);
+        hwMap.rightBack.setPower(power);
+        hwMap.leftBack.setPower(-power);
     }
     public void mecanumDrive(double frPower, double flPower, double brPower, double blPower){
         hwMap.rightFront.setPower(frPower);
@@ -110,13 +116,6 @@ public class Drive9330 {
         }
         stop();
     }
-
-//    public void driveLeft(float power){
-//        hwMap.rightFront.setPower(power);
-//        hwMap.leftFront.setPower(power);
-//        hwMap.rightBack.setPower(-power);
-//        hwMap.leftBack.setPower(-power);
-//    }
 
 //    public void driveBottomLeft(float power){
 //        hwMap.leftFront.setPower(-power);

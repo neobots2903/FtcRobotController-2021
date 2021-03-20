@@ -13,8 +13,9 @@ public class Hardware9330 {
     public static DcMotor leftFront;
     public static DcMotor rightBack;
     public static DcMotor leftBack;
-    public static DcMotor intakeLeft;
-    public static DcMotor intakeRight;
+    public static DcMotor intakeBottom;
+    public static DcMotor intakeMiddle;
+    public static DcMotor shooter;
 
     public static BNO055IMU gyro;
 
@@ -49,9 +50,9 @@ public class Hardware9330 {
 //        gyro = hwMap.get(BNO055IMU.class, "gyro");
 
 
-//       intakeLeft = hwMap.dcMotor.get("intakeLeft");
-//      intakeRight = hwMap.dcMotor.get("intakeRight");
-
+//       intakeBottom = hwMap.dcMotor.get("intakeBottom");
+//      intakeMiddle = hwMap.dcMotor.get("intakeMiddle");
+//        shooter = hwMap.dcMotor.get("shooter");
 
 
     }

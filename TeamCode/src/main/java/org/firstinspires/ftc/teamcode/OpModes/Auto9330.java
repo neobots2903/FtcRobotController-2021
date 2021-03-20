@@ -33,10 +33,7 @@ public class Auto9330 extends LinearOpMode {
 
         }
         double power = .5;
-        double flPower = 0;
-        double blPower = 0;
-        double frPower = 0;
-        double brPower = 0;
+
         //Strafe Left
 //        flPower = power;
 //        blPower = -power;
@@ -47,13 +44,13 @@ public class Auto9330 extends LinearOpMode {
 //         blPower = -power;
 //         frPower = power;
 //         brPower = power;
-        drive.mecanumDrive(power, -power, power, -power);  //Forward
-        drive.mecanumDrive(power, power, power, power);  //TwistLeft
-        drive.mecanumDrive(-power, -power, -power, -power);  //TwistRight
-        drive.mecanumDrive(-power, power, -power, power);  //Back
-        drive.mecanumDrive(power, -power, power, -power);  //StrafeLeft
-        drive.mecanumDrive(-power, power, power, -power);  //StrafeRight
-        drive.mecanumDrive(0, 0, 0, 0); //Stop
+        drive.driveForward(power);
+        drive.turnCounterClockwise(power);
+        drive.turnClockwise(power);
+        drive.driveBackward(power);
+        drive.driveLeft(power);
+        drive.driveRight(power);
+        drive.stop();
         sleep(200000);
         sleep(250);
 
