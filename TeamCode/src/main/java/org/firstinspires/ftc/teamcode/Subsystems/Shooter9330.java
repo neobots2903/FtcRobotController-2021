@@ -6,6 +6,9 @@ public class Shooter9330 {
 
     Hardware9330 hwMap;
 
+    double lastPosition = -1;
+    double lastTime = -1;
+
     public Shooter9330(Hardware9330 hwMap){
         this.hwMap = hwMap;
     }
@@ -27,5 +30,14 @@ public class Shooter9330 {
         hwMap.shooter.setPower(0);
 
     }
-
+    public double getCurrentPosition() {
+        return hwMap.shooter.getCurrentPosition();
+    }
+    public double getSpeed() {
+        if (lastTime != -1){
+            double change = hwMap.shooter.getCurrentPosition() - lastPosition;
+        }
+        lastPosition = hwMap.shooter.getCurrentPosition();
+        return 0;
+    }
 }

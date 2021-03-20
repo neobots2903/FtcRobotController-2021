@@ -52,8 +52,8 @@ public class Hardware9330 {
 
 //       intakeBottom = hwMap.dcMotor.get("intakeBottom");
 //      intakeMiddle = hwMap.dcMotor.get("intakeMiddle");
-//        shooter = hwMap.dcMotor.get("shooter");
-
+        shooter = hwMap.dcMotor.get("shooter");
+        shooter.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
     }
 

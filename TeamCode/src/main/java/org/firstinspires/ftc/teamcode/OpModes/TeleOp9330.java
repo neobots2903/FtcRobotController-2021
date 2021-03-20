@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.Hardware9330;
 import org.firstinspires.ftc.teamcode.Subsystems.Drive9330;
+import org.firstinspires.ftc.teamcode.Subsystems.Shooter9330;
 
 @TeleOp(name = "TeleOp9330", group = "Opmode")
 
@@ -13,6 +14,7 @@ public class TeleOp9330 extends OpMode {
     Hardware9330 robot9330 = new Hardware9330();
 
     Drive9330 drive;
+    Shooter9330 shooter;
 
     private boolean isAHeld = false;
     private boolean isAHeld1 = false;
@@ -24,12 +26,12 @@ public class TeleOp9330 extends OpMode {
         robot9330.init(hardwareMap);
 
         drive = new Drive9330(robot9330);
-
+        shooter = new Shooter9330(robot9330);
     }
 
     @Override
     public void loop() {
-
+        telemetry.addData("Current position: ", shooter.getCurrentPosition());
         if (gamepad2.a && !isAHeld) {
 
             telemetry.addData("Program: ", "A2 is tapped");

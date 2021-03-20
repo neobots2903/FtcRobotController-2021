@@ -1,9 +1,7 @@
 package org.firstinspires.ftc.teamcode.OpModes;
 
-import android.os.PowerManager;
-
-import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.teamcode.Hardware9330;
 import org.firstinspires.ftc.teamcode.Subsystems.Drive9330;
