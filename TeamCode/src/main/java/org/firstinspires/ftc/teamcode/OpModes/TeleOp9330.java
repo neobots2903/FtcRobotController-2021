@@ -34,6 +34,9 @@ public class TeleOp9330 extends OpMode {
     public void loop() {
         telemetry.addData("Current position: ", shooter.getCurrentPosition());
         telemetry.addData("Current speed: ", shooter.getSpeed());
+        telemetry.addData("Push Shoot Button: ", gamepad2.x);
+        telemetry.addData("Setpoint: ", shooter.getSetpoint());
+        telemetry.addData("PID value", shooter.getPID());
         if (gamepad2.a && !isAHeld) {
 
             telemetry.addData("Program: ", "A2 is tapped");
