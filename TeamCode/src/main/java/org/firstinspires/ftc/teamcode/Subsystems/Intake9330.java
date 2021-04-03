@@ -12,7 +12,6 @@ public class Intake9330 {
 
     public void takeIn(double power){
         hwMap.intakeBottom.setPower(power);
-        hwMap.intakeMiddle.setPower(power);
 
     }
     public void takeInTime(double power, double seconds){
@@ -25,7 +24,6 @@ public class Intake9330 {
 
     public void stop() {
         hwMap.intakeBottom.setPower(0);
-        hwMap.intakeMiddle.setPower(0);
     }
 
 }
