@@ -88,8 +88,8 @@ public class TeleOp9330 extends OpMode {
 //        }
 //        drive.turnClockwise(-gamepad1.right_stick_x);
         double yPower = -gamepad1.left_stick_y;
-        double xPower = gamepad1.left_stick_x;
-        double rightXPower = gamepad1.right_stick_x;
+        double xPower = gamepad1.right_stick_x;
+        double rightXPower = gamepad1.left_stick_x;
         double flPower = -(yPower + (xPower * 1.25) + rightXPower); // uneven robot weight means we'll need to adjust values of 1 for proper strafing
         double blPower = -(yPower + (xPower * 1) - rightXPower);
         double frPower = yPower - (xPower * 1.25) - rightXPower;
