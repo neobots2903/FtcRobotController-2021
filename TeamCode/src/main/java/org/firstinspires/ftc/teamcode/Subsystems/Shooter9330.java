@@ -11,18 +11,21 @@ public class Shooter9330 {
     double lastPosition = -1;
     double lastTime = -1;
     final int TICKS_PER_REV = 28;
+    double lastPID = -1;
 
     public Shooter9330(Hardware9330 hwMap){
         this.hwMap = hwMap;
-        pid = new PIDController(0, 0, 0);
-        pid.setInputRange(0, 300);
-        pid.setOutputRange(0, 1);
+        pid = new PIDController(.001, 0, 0);
+        pid.setInputRange(0, 100);
+        pid.setOutputRange(0.0, 1.0);
         pid.setSetpoint(0);
+        pid.enable();
     }
 
-    public void shootSpeed (double speed){
+    public void shootSpeed (double speed) {
         pid.setSetpoint(speed);
-        shoot(pid.performPID(getSpeed()));
+        lastPID = pid.performPID(getSpeed());
+        shoot(lastPID);
     }
 
     public void shoot(double power){
@@ -50,12 +53,18 @@ public class Shooter9330 {
 
         if (lastTime != -1){
             double changeTick = hwMap.shooter.getCurrentPosition() - lastPosition;
-            double changeTime = (System.currentTimeMillis() - lastTime)/60000; //goes from millis to minutes lol
+            double changeTime = (System.currentTimeMillis() - lastTime)/1000; //goes from millis to seconds lol
             double rev = changeTick/TICKS_PER_REV;
             revPerMin = rev/changeTime;
         }
         lastTime = System.currentTimeMillis();
         lastPosition = hwMap.shooter.getCurrentPosition();
         return revPerMin;
+    }
+    public double getSetpoint() {
+      return pid.getSetpoint();
+    }
+    public double getPID() {
+        return lastPID;
     }
 }
