@@ -50,7 +50,7 @@ public class Hardware9330 {
 //        gyro = hwMap.get(BNO055IMU.class, "gyro");
 
 
-//       intakeBottom = hwMap.dcMotor.get("intakeBottom");
+        intakeBottom = hwMap.dcMotor.get("intakeBottom");
 //      intakeMiddle = hwMap.dcMotor.get("intakeMiddle");
         shooter = hwMap.dcMotor.get("shooter");
         shooter.setMode(DcMotor.RunMode.RUN_USING_ENCODER);

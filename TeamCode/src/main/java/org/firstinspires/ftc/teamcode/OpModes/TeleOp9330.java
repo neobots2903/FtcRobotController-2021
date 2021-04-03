@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.Hardware9330;
 import org.firstinspires.ftc.teamcode.Subsystems.Drive9330;
+import org.firstinspires.ftc.teamcode.Subsystems.Intake9330;
 import org.firstinspires.ftc.teamcode.Subsystems.Shooter9330;
 
 @TeleOp(name = "TeleOp9330", group = "Opmode")
@@ -15,6 +16,7 @@ public class TeleOp9330 extends OpMode {
 
     Drive9330 drive;
     Shooter9330 shooter;
+    Intake9330 intake;
 
     private boolean isAHeld = false;
     private boolean isAHeld1 = false;
@@ -25,6 +27,7 @@ public class TeleOp9330 extends OpMode {
     public void init() {
         robot9330.init(hardwareMap);
 
+        intake = new Intake9330(robot9330);
         drive = new Drive9330(robot9330);
         shooter = new Shooter9330(robot9330);
         shooter.getSpeed();
@@ -65,7 +68,14 @@ public class TeleOp9330 extends OpMode {
             shooter.shootSpeed(1);
         }
         else {
-            shooter.shootSpeed(0);
+            shooter.stop();
+        }
+
+        if (gamepad2.y) {
+            intake.takeIn(1);
+        }
+        else {
+            intake.stop();
         }
 
         if (gamepad2.b && !isBHeld) {
