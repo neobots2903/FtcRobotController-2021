@@ -18,6 +18,9 @@ public class TeleOp9330 extends OpMode {
     Shooter9330 shooter;
     Intake9330 intake;
 
+    double shooterTime = 0;
+    boolean shooterPressed = false;
+
     private boolean isAHeld = false;
     private boolean isAHeld1 = false;
     private boolean isBHeld = false;
@@ -40,6 +43,8 @@ public class TeleOp9330 extends OpMode {
         telemetry.addData("Push Shoot Button: ", gamepad2.x);
         telemetry.addData("Setpoint: ", shooter.getSetpoint());
         telemetry.addData("PID value", shooter.getPID());
+        telemetry.addData("Yaw: ", drive.getGyro());
+
         if (gamepad2.a && !isAHeld) {
 
             telemetry.addData("Program: ", "A2 is tapped");
@@ -64,18 +69,30 @@ public class TeleOp9330 extends OpMode {
             telemetry.addData("Program: ", "A1 isn't tapped");
         }
 
-        if (gamepad2.x) {
-            shooter.shootSpeed(1);
+        if (gamepad1.x) {
+            shooter.shoot(1);
+            if (!shooterPressed){
+                shooterTime = System.currentTimeMillis();
+                shooterPressed = true;
+            }
+
         }
         else {
             shooter.stop();
+            shooterPressed = false;
+
         }
 
-        if (gamepad2.y) {
+        if (gamepad1.y) {
             intake.takeIn(1);
         }
         else {
-            intake.stop();
+            if (System.currentTimeMillis() <= shooterTime + 100){
+                intake.takeIn(-1);
+            }
+            else {
+                intake.stop();
+            }
         }
 
         if (gamepad2.b && !isBHeld) {
@@ -103,10 +120,6 @@ public class TeleOp9330 extends OpMode {
         double yPower = -gamepad1.left_stick_y;
         double xPower = gamepad1.right_stick_x;
         double rightXPower = gamepad1.left_stick_x;
-        double flPower = -(yPower + (xPower * 1.25) + rightXPower); // uneven robot weight means we'll need to adjust values of 1 for proper strafing
-        double blPower = -(yPower + (xPower * 1) - rightXPower);
-        double frPower = yPower - (xPower * 1.25) - rightXPower;
-        double brPower = yPower - (xPower * 1) + rightXPower;
-        drive.mecanumDrive(frPower, flPower, brPower, blPower);
+        drive.mecanumDrive(yPower, xPower, rightXPower);
     }
 }

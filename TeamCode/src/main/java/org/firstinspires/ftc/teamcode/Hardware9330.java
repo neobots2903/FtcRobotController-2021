@@ -47,7 +47,7 @@ public class Hardware9330 {
         leftBack.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
 
-//        gyro = hwMap.get(BNO055IMU.class, "gyro");
+        gyro = hwMap.get(BNO055IMU.class, "gyro");
 
 
         intakeBottom = hwMap.dcMotor.get("intakeBottom");

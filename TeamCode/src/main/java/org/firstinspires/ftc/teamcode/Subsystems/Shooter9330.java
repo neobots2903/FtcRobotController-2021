@@ -15,8 +15,8 @@ public class Shooter9330 {
 
     public Shooter9330(Hardware9330 hwMap){
         this.hwMap = hwMap;
-        pid = new PIDController(.001, 0, 0);
-        pid.setInputRange(0, 100);
+        pid = new PIDController(.05, 0, 0);
+        pid.setInputRange(0, 6000);
         pid.setOutputRange(0.0, 1.0);
         pid.setSetpoint(0);
         pid.enable();
@@ -53,7 +53,7 @@ public class Shooter9330 {
 
         if (lastTime != -1){
             double changeTick = hwMap.shooter.getCurrentPosition() - lastPosition;
-            double changeTime = (System.currentTimeMillis() - lastTime)/1000; //goes from millis to seconds lol
+            double changeTime = (System.currentTimeMillis() - lastTime)/1000/60; //goes from millis to seconds lol
             double rev = changeTick/TICKS_PER_REV;
             revPerMin = rev/changeTime;
         }
