@@ -111,7 +111,7 @@ public class Drive9330 {
         int startPos = hwMap.leftFront.getCurrentPosition();
         double startGyro = gyro.getYaw();
         int targetMove = (int)(TICKS_PER_ROTATION * distance / CIRCUMFERENCE);
-        if (power < 1) {
+        if (power < 0) {
             while (hwMap.leftFront.getCurrentPosition() > startPos - targetMove) {
                 gyroDriveForward(power, startGyro);
             }
