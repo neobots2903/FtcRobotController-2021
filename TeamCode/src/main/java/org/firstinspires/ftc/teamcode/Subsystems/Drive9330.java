@@ -45,6 +45,7 @@ public class Drive9330 {
     public double getGyro (){
         return gyro.getYaw();
     }
+    public double getPos () {return hwMap.leftFront.getCurrentPosition(); }
 
     public void gyroTurn(double targetAngle){
         double minAngle = targetAngle - turnError +  gyro.getYaw();
@@ -66,16 +67,16 @@ public class Drive9330 {
         double turnOffset = (gyro.getYaw() - targetAngle) / 45;
         hwMap.rightFront.setPower(-power + turnOffset);
         hwMap.leftFront.setPower(power + turnOffset);
-        hwMap.rightBack.setPower(power + turnOffset);
-        hwMap.leftBack.setPower(-power + turnOffset);
+        hwMap.rightBack.setPower(-power + turnOffset);
+        hwMap.leftBack.setPower(power + turnOffset);
     }
 
 
     public void driveForward(double power){
-        hwMap.rightFront.setPower(-power);
-        hwMap.leftFront.setPower(power);
-        hwMap.rightBack.setPower(power);
-        hwMap.leftBack.setPower(-power);
+        hwMap.rightFront.setPower(-power * 1.25);
+        hwMap.leftFront.setPower(power * 1.25);
+        hwMap.rightBack.setPower(-power);
+        hwMap.leftBack.setPower(power);
     }
 
     public void driveBackward(double power){

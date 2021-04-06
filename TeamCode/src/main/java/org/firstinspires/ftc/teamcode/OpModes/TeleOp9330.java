@@ -44,6 +44,7 @@ public class TeleOp9330 extends OpMode {
         telemetry.addData("Setpoint: ", shooter.getSetpoint());
         telemetry.addData("PID value", shooter.getPID());
         telemetry.addData("Yaw: ", drive.getGyro());
+        telemetry.addData("Position: ", drive.getPos());
 
         if (gamepad2.a && !isAHeld) {
 
