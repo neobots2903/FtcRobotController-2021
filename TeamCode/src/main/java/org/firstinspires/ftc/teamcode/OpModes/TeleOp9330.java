@@ -17,13 +17,17 @@ public class TeleOp9330 extends OpMode {
     Drive9330 drive;
     Shooter9330 shooter;
     Intake9330 intake;
+    Intake9330 harvester;
 
     double shooterTime = 0;
+    double shootSpeed = 1;
     boolean shooterPressed = false;
 
     private boolean isAHeld = false;
     private boolean isAHeld1 = false;
     private boolean isBHeld = false;
+    boolean isDDownHeld = false;
+    boolean isDUpHeld = false;
 
 
     @Override
@@ -33,6 +37,7 @@ public class TeleOp9330 extends OpMode {
         intake = new Intake9330(robot9330);
         drive = new Drive9330(robot9330);
         shooter = new Shooter9330(robot9330);
+        harvester = new Intake9330(robot9330);
         shooter.getSpeed();
     }
 
@@ -45,6 +50,30 @@ public class TeleOp9330 extends OpMode {
         telemetry.addData("PID value", shooter.getPID());
         telemetry.addData("Yaw: ", drive.getGyro());
         telemetry.addData("Position: ", drive.getPos());
+        telemetry.addData("shootSpeed: ", shootSpeed);
+        telemetry.addData("Shoot Speed: ", shooter.getSpeed());
+
+
+        if (gamepad1.dpad_down && !isDDownHeld) {
+            if(shootSpeed <= 0)
+                shootSpeed = 0;
+            else shootSpeed -= .1;
+
+            isDDownHeld = true;
+
+        } else if (!gamepad1.dpad_down) {
+            isDDownHeld = false;
+        }
+        if (gamepad1.dpad_up && !isDUpHeld) {
+            if(shootSpeed >= 1)
+                shootSpeed = 1;
+            else shootSpeed += .1;
+
+            isDUpHeld = true;
+
+        } else if (!gamepad1.dpad_up) {
+            isDUpHeld = false;
+        }
 
         if (gamepad2.a && !isAHeld) {
 
@@ -71,7 +100,7 @@ public class TeleOp9330 extends OpMode {
         }
 
         if (gamepad1.x) {
-            shooter.shoot(1);
+            shooter.shoot(shootSpeed);
             if (!shooterPressed){
                 shooterTime = System.currentTimeMillis();
                 shooterPressed = true;

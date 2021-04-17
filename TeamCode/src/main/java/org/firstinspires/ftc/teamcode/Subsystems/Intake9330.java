@@ -12,6 +12,7 @@ public class Intake9330 {
 
     public void takeIn(double power){
         hwMap.intakeBottom.setPower(-power);
+        hwMap.harvester.setPower(-power);
 
     }
     public void takeInTime(double power, double seconds){
