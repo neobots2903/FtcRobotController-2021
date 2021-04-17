@@ -20,7 +20,7 @@ public class TeleOp9330 extends OpMode {
     Intake9330 harvester;
 
     double shooterTime = 0;
-    double shootSpeed = 1;
+    double shootRPM = 4000;
     boolean shooterPressed = false;
 
     private boolean isAHeld = false;
@@ -44,20 +44,19 @@ public class TeleOp9330 extends OpMode {
     @Override
     public void loop() {
         telemetry.addData("Current position: ", shooter.getCurrentPosition());
-        telemetry.addData("Current speed: ", shooter.getSpeed());
+        telemetry.addData("Current speed: ", shooter.getNewRev());
         telemetry.addData("Push Shoot Button: ", gamepad2.x);
         telemetry.addData("Setpoint: ", shooter.getSetpoint());
         telemetry.addData("PID value", shooter.getPID());
         telemetry.addData("Yaw: ", drive.getGyro());
         telemetry.addData("Position: ", drive.getPos());
-        telemetry.addData("shootSpeed: ", shootSpeed);
-        telemetry.addData("Shoot Speed: ", shooter.getSpeed());
+        telemetry.addData("shootSpeed: ", shootRPM);
 
 
         if (gamepad1.dpad_down && !isDDownHeld) {
-            if(shootSpeed <= 0)
-                shootSpeed = 0;
-            else shootSpeed -= .1;
+            if(shootRPM - 50 <= 0)
+                shootRPM = 0;
+            else shootRPM -= 50;
 
             isDDownHeld = true;
 
@@ -65,9 +64,9 @@ public class TeleOp9330 extends OpMode {
             isDDownHeld = false;
         }
         if (gamepad1.dpad_up && !isDUpHeld) {
-            if(shootSpeed >= 1)
-                shootSpeed = 1;
-            else shootSpeed += .1;
+            if(shootRPM + 50 >= 6000)
+                shootRPM = 6000;
+            else shootRPM += 50;
 
             isDUpHeld = true;
 
@@ -100,7 +99,7 @@ public class TeleOp9330 extends OpMode {
         }
 
         if (gamepad1.x) {
-            shooter.shoot(shootSpeed);
+            shooter.shootForSpeed(shootRPM);
             if (!shooterPressed){
                 shooterTime = System.currentTimeMillis();
                 shooterPressed = true;
@@ -147,9 +146,10 @@ public class TeleOp9330 extends OpMode {
 //            drive.driveRight(xPower);
 //        }
 //        drive.turnClockwise(-gamepad1.right_stick_x);
-        double yPower = -gamepad1.left_stick_y;
-        double xPower = gamepad1.right_stick_x;
-        double rightXPower = gamepad1.left_stick_x;
+        
+        double yPower = gamepad1.left_stick_y; //check if this actually fixes robot going backwards lol
+        double xPower = -gamepad1.right_stick_x;
+        double rightXPower = -gamepad1.left_stick_x;
         drive.mecanumDrive(yPower, xPower, rightXPower);
     }
 }
