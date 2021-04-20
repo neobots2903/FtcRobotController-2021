@@ -32,7 +32,7 @@ public class Auto9330 extends LinearOpMode {
         drive.driveForwardDistance(.5, 100);
         drive.driveForwardDistance(-.5, 56);
         drive.gyroTurn(-30);
-        shooter.shoot(1);
+        shooter.shootForSpeed(4000);
         sleep(1000);
         intake.takeIn(1);
         sleep(5000);
