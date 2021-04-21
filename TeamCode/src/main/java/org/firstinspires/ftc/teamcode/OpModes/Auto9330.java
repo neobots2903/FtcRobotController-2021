@@ -26,16 +26,23 @@ public class Auto9330 extends LinearOpMode {
         shooter = new Shooter9330(robot9330);
         intake = new Intake9330(robot9330);
 
+        long startTime = 0;
+
         waitForStart();
 
         drive.gyroTurn(10);
         drive.driveForwardDistance(.5, 100);
         drive.driveForwardDistance(-.5, 56);
         drive.gyroTurn(-30);
-        shooter.shootForSpeed(4000);
-        sleep(1000);
-        intake.takeIn(1);
-        sleep(5000);
+        startTime = System.currentTimeMillis();
+        while (startTime + 1000 > System.currentTimeMillis()) {
+            shooter.shootForSpeed(3950);
+        }
+        startTime = System.currentTimeMillis();
+        while (startTime + 10000 > System.currentTimeMillis()) {
+            shooter.shootForSpeed(3950);
+            intake.takeIn(1);
+        }
         shooter.stop();
         intake.stop();
         drive.driveForwardDistance(.5, 18);

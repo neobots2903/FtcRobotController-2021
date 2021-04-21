@@ -20,7 +20,7 @@ public class TeleOp9330 extends OpMode {
     Intake9330 harvester;
 
     double shooterTime = 0;
-    double shootRPM = 4000;
+    double shootRPM = 3950;
     boolean shooterPressed = false;
 
     private boolean isAHeld = false;
@@ -146,9 +146,9 @@ public class TeleOp9330 extends OpMode {
 //            drive.driveRight(xPower);
 //        }
 //        drive.turnClockwise(-gamepad1.right_stick_x);
-        
-        double yPower = gamepad1.left_stick_y; //check if this actually fixes robot going backwards lol
-        double xPower = -gamepad1.right_stick_x;
+
+        double yPower = gamepad1.left_stick_y;
+        double xPower = gamepad1.right_stick_x;
         double rightXPower = -gamepad1.left_stick_x;
         drive.mecanumDrive(yPower, xPower, rightXPower);
     }

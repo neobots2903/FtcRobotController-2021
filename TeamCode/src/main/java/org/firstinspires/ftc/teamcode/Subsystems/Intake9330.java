@@ -25,6 +25,7 @@ public class Intake9330 {
 
     public void stop() {
         hwMap.intakeBottom.setPower(0);
+        hwMap.harvester.setPower(0);
     }
 
 }
