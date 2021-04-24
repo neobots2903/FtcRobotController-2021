@@ -33,7 +33,7 @@ public class Auto9330 extends LinearOpMode {
         drive.gyroTurn(10);
         drive.driveForwardDistance(.5, 100);
         drive.driveForwardDistance(-.5, 56);
-        drive.gyroTurn(-30);
+        drive.gyroTurn(-35);
         startTime = System.currentTimeMillis();
         while (startTime + 1000 > System.currentTimeMillis()) {
             shooter.shootForSpeed(3950);
@@ -47,17 +47,6 @@ public class Auto9330 extends LinearOpMode {
         intake.stop();
         drive.driveForwardDistance(.5, 18);
 
-//        drive.driveForwardDistance(-.5, 62);
-//        shooter.shoot(1);
-//        sleep(1000);
-//        intake.takeIn(1);
-//        sleep(5000);
-//        shooter.stop();
-//        intake.stop();
-//        drive.gyroTurn(10);
-//        drive.driveForwardDistance(-.5, 66-12);
-//        drive.gyroTurn(-10);
-//        drive.driveForwardDistance(.5, 20);
 
   }
 }
