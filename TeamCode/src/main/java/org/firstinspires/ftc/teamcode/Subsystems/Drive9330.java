@@ -48,8 +48,8 @@ public class Drive9330 {
     public double getPos () {return hwMap.leftFront.getCurrentPosition(); }
 
     public void gyroTurn(double targetAngle){
-        double minAngle = targetAngle - turnError +  gyro.getYaw();
-        double maxAngle = targetAngle + turnError +  gyro.getYaw();
+        double minAngle = targetAngle - turnError;
+        double maxAngle = targetAngle + turnError;
         while (gyro.getYaw() < minAngle || gyro.getYaw() > maxAngle){
             double calcPower = Math.abs(maxAngle - gyro.getYaw()) / 45;
             if (calcPower < 0.1) calcPower = 0.1;
@@ -88,9 +88,9 @@ public class Drive9330 {
 
     public void driveRight(double power){
         hwMap.rightFront.setPower(power);
-        hwMap.leftFront.setPower(-power);
+        hwMap.leftFront.setPower(power);
         hwMap.rightBack.setPower(-power);
-        hwMap.leftBack.setPower(power);
+        hwMap.leftBack.setPower(-power);
     }
     public void driveLeft(double power){
         hwMap.rightFront.setPower(-power);
@@ -123,6 +123,11 @@ public class Drive9330 {
             }
         }
         gyroTurn(startGyro);
+        if (power > .8) {
+            driveForwardTime(-1, .05);
+        } else if (power < -.8) {
+            driveForwardTime(1, .05);
+        }
         stop();
     }
 

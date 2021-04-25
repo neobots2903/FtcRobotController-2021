@@ -51,6 +51,7 @@ public class TeleOp9330 extends OpMode {
         telemetry.addData("Yaw: ", drive.getGyro());
         telemetry.addData("Position: ", drive.getPos());
         telemetry.addData("shootSpeed: ", shootRPM);
+        telemetry.addData("rollingMin: ", shooter.rollingMinSpeed());
 
 
         if (gamepad1.dpad_down && !isDDownHeld) {
@@ -112,7 +113,7 @@ public class TeleOp9330 extends OpMode {
 
         }
 
-        if (gamepad1.y) {
+        if (gamepad1.a) {
             intake.takeIn(1);
         }
         else {

@@ -14,9 +14,11 @@ public class Shooter9330 implements Runnable {
 
     double lastPosition = -1;
     double lastTime = -1;
+    int rollingMinIndex = 0;
     final int TICKS_PER_REV = 28;
     double lastPID = -1;
     double newRev = 0;
+    double speedValues [] = new double [20];
     boolean shoot = false;
 
     ScheduledExecutorService speedThread;
@@ -50,6 +52,15 @@ public class Shooter9330 implements Runnable {
             shoot(power);
         }
         stop();
+    }
+
+    public double rollingMinSpeed() {
+        double minSpeed = speedValues[0];
+        for(double speed: speedValues){
+            if(speed < minSpeed)
+                minSpeed = speed;
+        }
+        return minSpeed;
     }
 
     public void stop() {
@@ -87,7 +98,11 @@ public class Shooter9330 implements Runnable {
 
     @Override
     public void run() {
-        lastPID = pid.performPID(getSpeed());
+        double speed = getSpeed();
+        lastPID = pid.performPID(speed);
+        if (rollingMinIndex > 19)
+            rollingMinIndex = 0;
+        speedValues[rollingMinIndex++] = speed;
         if (shoot)
         shoot(lastPID);
     }
