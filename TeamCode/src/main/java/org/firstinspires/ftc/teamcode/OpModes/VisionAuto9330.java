@@ -59,84 +59,84 @@ public class VisionAuto9330 extends LinearOpMode {
         waitForStart();
         double startAngle = drive.getGyro();
         if (opModeIsActive()) {
-            visionStartTime = System.currentTimeMillis();
-            while (opModeIsActive() && elementSeen == "") {
-                if (System.currentTimeMillis() >= visionStartTime + 1000) {
-                    elementSeen = "None";
-                }
-                if (tfod != null) {
-                    List<Recognition> updatedRecognitions = tfod.getUpdatedRecognitions();
-                    if (updatedRecognitions != null) {
-                        telemetry.addData("# Object Detected", updatedRecognitions.size());
-                        int i = 0;
-                        for (Recognition recognition : updatedRecognitions) {
-                            telemetry.addData(String.format("label (%d)", i), recognition.getLabel());
-                            elementSeen = recognition.getLabel();
-                            break;
-                        }
-                        telemetry.update();
-                    }
-                }
-            }
-            switch (elementSeen) {
-                case "None":
-                    drive.gyroTurn(10);
-                    drive.driveForwardDistance(1, 48);
-                    drive.driveForwardDistance(-1, 5);
-                    drive.gyroTurn(startAngle);
-                    drive.driveRightTime(-1, .5);
-                    break;
-                case "Single":
-                    drive.gyroTurn(-5);
-                    drive.driveForwardDistance(1, 70);
-                    drive.driveForwardDistance(-1, 27);
-                    break;
-                case "Quad":
-                    drive.gyroTurn(8);
-                    drive.driveForwardDistance(1, 100);
-                    drive.driveForwardDistance(-1, 56);
-                    drive.gyroTurn(startAngle);
-                    drive.driveRightTime(-1, .4);
-                    break;
-            }
-            drive.gyroTurn(startAngle - 2);
-            startTime = System.currentTimeMillis();
-            while (startTime + 000 > System.currentTimeMillis()) {
-                shooter.shootForSpeed(3950);
-            }
-            startTime = System.currentTimeMillis();
-            while (startTime + 10000 > System.currentTimeMillis()) {
-                shooter.shootForSpeed(3950);
-                intake.takeIn(1);
-            }
-//            int count = 0;
-//            double lastSpeed = shooter.getSpeed();
-//            while (count < 3){
-//                telemetry.addData("Count: ", count);
-//                telemetry.addData("Speed: ", lastSpeed);
-//                telemetry.update();
-//                if (shooter.getSpeed() <= 3300 && lastSpeed > 3300){
-//                    count++;
+//            visionStartTime = System.currentTimeMillis();
+//            while (opModeIsActive() && elementSeen == "") {
+//                if (System.currentTimeMillis() >= visionStartTime + 1000) {
+//                    elementSeen = "None";
 //                }
+//                if (tfod != null) {
+//                    List<Recognition> updatedRecognitions = tfod.getUpdatedRecognitions();
+//                    if (updatedRecognitions != null) {
+//                        telemetry.addData("# Object Detected", updatedRecognitions.size());
+//                        int i = 0;
+//                        for (Recognition recognition : updatedRecognitions) {
+//                            telemetry.addData(String.format("label (%d)", i), recognition.getLabel());
+//                            elementSeen = recognition.getLabel();
+//                            break;
+//                        }
+//                        telemetry.update();
+//                    }
+//                }
+//            }
+//            switch (elementSeen) {
+//                case "None":
+//                    drive.gyroTurn(10);
+//                    drive.driveForwardDistance(1, 48);
+//                    drive.driveForwardDistance(-1, 5);
+//                    drive.gyroTurn(startAngle);
+//                    drive.driveRightTime(-1, .5);
+//                    break;
+//                case "Single":
+//                    drive.gyroTurn(-5);
+//                    drive.driveForwardDistance(1, 70);
+//                    drive.driveForwardDistance(-1, 27);
+//                    break;
+//                case "Quad":
+//                    drive.gyroTurn(8);
+//                    drive.driveForwardDistance(1, 100);
+//                    drive.driveForwardDistance(-1, 56);
+//                    drive.gyroTurn(startAngle);
+//                    drive.driveRightTime(-1, .4);
+//                    break;
+//            }
+//            drive.gyroTurn(startAngle - 2);
+//            startTime = System.currentTimeMillis();
+//            while (startTime + 000 > System.currentTimeMillis()) {
+//                shooter.shootForSpeed(3950);
+//            }
+//            startTime = System.currentTimeMillis();
+//            while (startTime + 10000 > System.currentTimeMillis()) {
 //                shooter.shootForSpeed(3950);
 //                intake.takeIn(1);
-//                lastSpeed = shooter.getSpeed();
 //            }
-            shooter.stop();
-            intake.stop();
-            switch (elementSeen){
-                case "None":
-                case "Single":
-                    drive.driveForwardDistance(1, 15);
-                    break;
-                case "Quad":
-                    drive.driveForwardDistance(1, 20);
-                    break;
+            int count = 0;
+            double lastSpeed = shooter.getSpeed();
+            while (count < 3){
+                telemetry.addData("Count: ", count);
+                telemetry.addData("Speed: ", lastSpeed);
+                telemetry.update();
+                if (shooter.getSpeed() <= 3300 && lastSpeed > 3300){
+                    count++;
+                }
+                shooter.shootForSpeed(3950);
+                intake.takeIn(1);
+                lastSpeed = shooter.getSpeed();
             }
-        }
-
-        if (tfod != null) {
-            tfod.shutdown();
+//            shooter.stop();
+//            intake.stop();
+//            switch (elementSeen){
+//                case "None":
+//                case "Single":
+//                    drive.driveForwardDistance(1, 15);
+//                    break;
+//                case "Quad":
+//                    drive.driveForwardDistance(1, 20);
+//                    break;
+//            }
+//        }
+//
+//        if (tfod != null) {
+//            tfod.shutdown();
         }
     }
     private void initVuforia() {
