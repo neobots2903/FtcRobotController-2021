@@ -148,9 +148,9 @@ public class TeleOp9330 extends OpMode {
 //        }
 //        drive.turnClockwise(-gamepad1.right_stick_x);
 
-        double yPower = gamepad1.left_stick_y;
-        double xPower = gamepad1.right_stick_x;
-        double rightXPower = -gamepad1.left_stick_x;
+        double yPower = gamepad1.left_stick_y * .8;
+        double xPower = gamepad1.right_stick_x * .8;
+        double rightXPower = -gamepad1.left_stick_x * .8;
         drive.mecanumDrive(yPower, xPower, rightXPower);
     }
 }

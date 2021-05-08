@@ -112,7 +112,7 @@ public class VisionAuto9330 extends LinearOpMode {
 //            int count = 0;
 //            double lastSpeed = shooter.getSpeed();
 //            while (count < 3){
-//                telemetry.addData("count yeaaah :): ", count);
+//                telemetry.addData("Count: ", count);
 //                telemetry.addData("Speed: ", lastSpeed);
 //                telemetry.update();
 //                if (shooter.getSpeed() <= 3300 && lastSpeed > 3300){
